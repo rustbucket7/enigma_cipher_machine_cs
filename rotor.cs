@@ -18,7 +18,7 @@
                 {2, new RotorOutputs<string, string, char>("AJDKSIRUXBLHWTMCQGZNPYFVOE", "AJPCZWRLFBDKOTYUQGENHXMIVS", 'E')},
                 {3, new RotorOutputs<string, string, char>("BDFHJLCPRTXVZNYEIWGAKMUSQO", "TAGBPCSDQEUFVNZHYIXJWLRKOM", 'V')},
                 {4, new RotorOutputs<string, string, char>("ESOVPZJAYQUIRHXLNFTGKDCMWB", "HZWVARTNLGUPXQCEJMBSKDYOIF", 'J')},
-                {5, new RotorOutputs<string, string, char>("VZBRGITYUPSDNHLXAWMJQOFECK", "QCYLXWENFTZOSMVJUDKGIARPHB", 'Z')},
+                {5, new RotorOutputs<string, string, char>("VZBRGITYUPSDNHLXAWMJQOFECK", "QCYLXWENFTZOSMVJUDKGIARPHB", 'Z')}
             };
 
             // set the rotor to the appropriate starting position and select the rotor output strings
@@ -76,7 +76,7 @@
             curr_rotor_pos_letter = (char)(curr_rotor_pos_i + 65);
         }
 
-        // helper class to allow a List-like objects within Rotor class to have 3 arguments
+        // helper class to allow objects of mixed type within Rotor class
         internal class RotorOutputs<T1, T2, T3>
         {
             private string reg_output;
