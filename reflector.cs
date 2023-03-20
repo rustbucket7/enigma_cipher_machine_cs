@@ -25,7 +25,7 @@
         // Perform substitution cipher of the output letter from the left rotor to the reflector
         public char reflector_cipher(char left_rotor_letter, int left_rotor_pos_i) {
             int input_letter_i = (int)left_rotor_letter - 65;
-            int reflector_letter_i = (input_letter_i - left_rotor_pos_i) % 26;
+            int reflector_letter_i = Helpers.modulo((input_letter_i - left_rotor_pos_i), 26);
             char reflector_letter = get_reflector_letter_at_i(reflector_letter_i);
 
             return reflector_letter;

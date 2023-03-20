@@ -2,7 +2,8 @@
 
     // Defines a class simulating the functionality of the German Enigma I and M3 cipher machines used by the German Army and Air Force during WW2.
     // Uses rotors 1-5 and reflectors A-C.
-    class Enigma {
+    class Enigma
+    {
 
         private readonly Plugboard plugboard;
         private readonly Reflector reflector;
@@ -52,7 +53,7 @@
         }
 
         // First set of letter substitutions from the input wheel to just before the reflector
-        public char right_to_left_cipher(char letter, int prev_rotor_pos = 0, int curr_rotor_i = 0)
+        public char right_to_left_cipher(char letter, int prev_rotor_pos = 0, int curr_rotor_i = 2)
         {
             // Base case - when all rotors have been performed their ciphers
             if (curr_rotor_i < 0) { return letter; }
@@ -62,7 +63,7 @@
 
             // calculate index of output letter
             int curr_rotor_pos_i = rotors_used[curr_rotor_i].get_rotor_pos_i();
-            int output_letter_i = (input_letter_i + curr_rotor_pos_i - prev_rotor_pos) % 26;
+            int output_letter_i = Helpers.modulo((input_letter_i + curr_rotor_pos_i - prev_rotor_pos), 26);
             char output_letter = rotors_used[curr_rotor_i].get_output_letter(0, output_letter_i);
 
             // recursive calls to go through each rotor to get the output letter to feed into reflector
@@ -80,7 +81,7 @@
                 int output_input_letter_i = (int)letter - 65;
 
                 // calculate index of input letter
-                int output_letter_i = (output_input_letter_i - prev_rotor_pos) % 26;
+                int output_letter_i = Helpers.modulo((output_input_letter_i - prev_rotor_pos), 26);
                 char output_letter = (char)(output_letter_i + 65);
 
                 return output_letter;
@@ -90,12 +91,12 @@
             int input_letter_i = (int)letter - 65;
 
             // calculate index of input letter
-            int curr_rotor_pos = rotors_used[curr_rotor_i].get_rotor_pos_i();
-            int rev_output_i = (input_letter_i + curr_rotor_pos - prev_rotor_pos) % 26;
+            int curr_rotor_pos_i = rotors_used[curr_rotor_i].get_rotor_pos_i();
+            int rev_output_i = Helpers.modulo((input_letter_i + curr_rotor_pos_i - prev_rotor_pos), 26);
             char rev_output_letter = rotors_used[curr_rotor_i].get_output_letter(1, rev_output_i);
 
             // recursive calls to go through each rotor to get the output letter to feed into input wheel
-            return left_to_right_cipher(rev_output_letter, curr_rotor_pos, curr_rotor_i + 1);
+            return left_to_right_cipher(rev_output_letter, curr_rotor_pos_i, curr_rotor_i + 1);
         }
 
         // Perform encryption/decryption on the input_text
@@ -130,6 +131,8 @@
 
             return output_text;
         }
+
+        
     }
 
 }

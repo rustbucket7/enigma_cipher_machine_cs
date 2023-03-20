@@ -34,14 +34,14 @@
         public string ring_setting_rewiring(string rotor_output_string, char ring_letter)
         {
             int ring_letter_i = (int)ring_letter - 65;
-            int dot_position = (rotor_output_string.IndexOf('A') + ring_letter_i) % 26;
+            int dot_position = Helpers.modulo((rotor_output_string.IndexOf('A') + ring_letter_i), 26);
             string shifted_str = "";
 
             // shift up each letter in rotor_output_str
             for (int i = 0; i < rotor_output_string.Length; i++)
             {
                 int letter_i = (int)rotor_output_string[i] - 65;
-                shifted_str += (char)(((letter_i + ring_letter_i) % 26) + 65);
+                shifted_str += (char)(Helpers.modulo((letter_i + ring_letter_i), 26) + 65);
             }
 
             // rotate letters in shifted rotor_output_str until ring_letter is in the index position of dot_position
@@ -72,7 +72,7 @@
         // Turn the rotor forward 1 step/position
         public void step_rotor()
         {
-            int curr_rotor_pos_i = (get_rotor_pos_i() + 1) % 26;
+            int curr_rotor_pos_i = Helpers.modulo((get_rotor_pos_i() + 1), 26);
             curr_rotor_pos_letter = (char)(curr_rotor_pos_i + 65);
         }
 
