@@ -1,16 +1,17 @@
-﻿namespace EnigmaMachine {
+﻿namespace EnigmaMachine
+{
 
     // Defines a class simulating the functionality of the German Enigma I and M3 cipher machines used by the German Army and Air Force during WW2.
     // Uses rotors 1-5 and reflectors A-C.
     class Enigma
     {
-
         private readonly Plugboard plugboard;
         private readonly Reflector reflector;
         private readonly List<Rotor> rotors_used;
 
         // Define initial variable values of an Enigma object
-        public Enigma(List<int> settings_rotor_choices, List<string> settings_plugboard_pairings, List<char> settings_starting_rotor_pos, List<char> settings_ring, char settings_reflector) {
+        public Enigma(List<int> settings_rotor_choices, List<string> settings_plugboard_pairings, List<char> settings_starting_rotor_pos, List<char> settings_ring, char settings_reflector)
+        {
 
             plugboard = new Plugboard(settings_plugboard_pairings);
             reflector = new Reflector(settings_reflector);
