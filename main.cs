@@ -2,7 +2,8 @@
 
 class EnigmaRun
 {
-    // Main method for when running the program through an IDE or command line
+    /*// Main method for when running the program through an IDE or command line
+    // comment out when not in use
     static public void Main()
     {
         List<int> rotor_choices = new List<int>(3) { 2, 4, 5 };
@@ -16,7 +17,7 @@ class EnigmaRun
 
         string output_text = enigma_run(rotor_choices, plugboard_pairings, initial_rotor_settings, ring_settings, reflector, user_input);
         Console.WriteLine("Output text is: " + output_text);
-    }
+    }*/
 
     /*
     enigma_run(...) is the program's driving function:
